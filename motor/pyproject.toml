@@ -1,0 +1,37 @@
+[project]
+name = "minuta"
+version = "0.9.5"
+description = "Motor de Minuta: captura, transcripción y biblioteca de reuniones"
+requires-python = ">=3.11"
+dependencies = [
+  "faster-whisper",
+  "pyaudiowpatch",
+  "av",
+  "numpy",
+  "icalendar",
+  "recurring-ical-events",
+  "fastapi",
+  "uvicorn[standard]",
+  "keyring",
+  "mcp>=2",
+  "sherpa-onnx",
+  "pycaw",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "httpx"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["minuta*"]
+
+# El glosario inicial: sin esto el paquete instalado no lo trae y el motor no arranca con datos nuevos.
+[tool.setuptools.package-data]
+minuta = ["recursos/*.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

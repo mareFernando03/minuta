@@ -1,0 +1,68 @@
+# Node / Vite
+node_modules/
+app/dist/
+*.tsbuildinfo
+npm-debug.log*
+
+# Tauri / Rust
+target/
+app/src-tauri/gen/
+app/src-tauri/motor-dist/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+motor/build/
+motor/dist/
+*.egg-info/
+
+# Tests
+app/test-results/
+app/playwright-report/
+blob-report/
+
+# Packaging
+build-cache/
+
+# Data and secrets: never in the repo
+.env
+.env.*
+*.local.json
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.wav
+*.flac
+*.mp3
+*.m4a
+*.ogg
+*.webm
+*.pem
+*.key
+*.pfx
+*.sqlite3
+
+# Recordings and downloaded models (they live in the data folder, never here)
+grabaciones/
+recordings/
+modelos/
+models/
+*.onnx
+*.onnx.tmp
+
+# Editors and OS
+.vscode/
+.idea/
+.claude/
+CLAUDE.local.md
+Thumbs.db
+Desktop.ini
+.DS_Store

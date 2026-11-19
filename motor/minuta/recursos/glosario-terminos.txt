@@ -1,0 +1,34 @@
+# Términos correctos para la corrección posterior de las transcripciones (correccion.py).
+# Uno por línea. Lo que va después de "<-" son deformaciones ya vistas, para orientar la corrección.
+# Es un ejemplo con nombres ficticios: reemplazalo por la gente y los sistemas de tus reuniones.
+
+## Personas
+Lucía Benítez (Lu) <- la luz, lucía venites
+Pablo Sosa (Pedro)
+Pedro Ríos (Pedro, Riosito)
+Juan Castro (el Juan)
+Laura Martínez
+Diego Molina
+Sofía Paz (Sofi)
+
+## Sistemas y términos
+Contoso <- consumidor, Sontoso
+Fabrikam
+Northwind
+Globex
+Orbit
+Acme
+Swagger
+NuGet
+Jenkins
+Oracle
+stage, dev, PRO
+appsettings <- upsetting, app setting
+deploy, deployar
+Meet (Google Meet) <- MIT
+Teams (Microsoft Teams)
+Slack
+Jira
+Azure DevOps
+Claude, Claude Code, Sonnet, Opus, Haiku
+Whisper

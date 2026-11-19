@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/* «Papel y tinta». Tokens en docs/plan-v1.md; contraste AA medido el 9/10/2026. */
+:root {
+  --fondo: #f7f4ee;
+  --papel: #efeae1;
+  --linea: #e2dbce;
+  --borde: #948b7d;      /* bordes de controles: 3:1 contra el fondo */
+  --tinta: #1c1a17;
+  --tenue: #665f55;      /* texto secundario: 5,7:1 */
+  --seleccion: #e8e1d4;
+  --acento: #b2321b;     /* «grabando» y lo que pide atención: ≥4,8:1 en todos los fondos */
+  --acento-suave: rgba(178, 50, 27, 0.06);
+  --ok: #3f6b4e;
+  --aviso: #8a5a12;      /* ámbar: «hace tiempo» o «pasó el plazo de espera» (5,3:1) */
+  --sombra: 0 18px 40px rgba(28, 26, 23, 0.14), 0 2px 6px rgba(28, 26, 23, 0.06);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    --fondo: #1b1917; --papel: #24211d; --linea: #36322c; --borde: #6e675c; --tinta: #ede7dd; --tenue: #aca497;
+    --seleccion: #2c2925; --acento: #f0705a; --acento-suave: rgba(240, 112, 90, 0.08); --ok: #7fae8c; --aviso: #d9a85a;
+    --sombra: 0 18px 40px rgba(0, 0, 0, 0.45);
+    color-scheme: dark;
+  }
+}
+
+:root[data-tema="oscuro"] {
+  --fondo: #1b1917; --papel: #24211d; --linea: #36322c; --borde: #6e675c; --tinta: #ede7dd; --tenue: #aca497;
+  --seleccion: #2c2925; --acento: #f0705a; --acento-suave: rgba(240, 112, 90, 0.08); --ok: #7fae8c; --aviso: #d9a85a;
+  --sombra: 0 18px 40px rgba(0, 0, 0, 0.45);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-fondo: var(--fondo);
+  --color-papel: var(--papel);
+  --color-linea: var(--linea);
+  --color-borde: var(--borde);
+  --color-tinta: var(--tinta);
+  --color-tenue: var(--tenue);
+  --color-seleccion: var(--seleccion);
+  --color-acento: var(--acento);
+  --color-acento-suave: var(--acento-suave);
+  --color-ok: var(--ok);
+  --color-aviso: var(--aviso);
+  --font-serif: "Newsreader Variable", Georgia, serif;
+  --font-sans: "Geist Variable", system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, monospace;
+  --shadow-flotante: var(--sombra);
+}
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+
+::selection { background: var(--acento-suave); }
+
+:focus-visible { outline: 2px solid var(--tinta); outline-offset: 2px; border-radius: 4px; }
+
+mark { background: var(--acento-suave); color: inherit; border-radius: 2px; padding: 0 1px; box-shadow: inset 0 -1px 0 var(--acento); }
+
+@keyframes latido { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.85); } }
+.latido { animation: latido 1.6s ease-in-out infinite; }
+
+@keyframes aparecer { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.aparecer { animation: aparecer 160ms ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .latido, .aparecer { animation: none; }
+  * { scroll-behavior: auto !important; transition: none !important; }
+}
+
+/* Barras de desplazamiento discretas, del color del papel */
+* { scrollbar-width: thin; scrollbar-color: var(--linea) transparent; }
+
+input[type="range"].barra { -webkit-appearance: none; appearance: none; height: 4px; border-radius: 2px; background: linear-gradient(to right, var(--acento) var(--avance, 0%), var(--linea) var(--avance, 0%)); }
+input[type="range"].barra::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: var(--tinta); }
+
+/* Resaltado de la transcripción (CSS Custom Highlight API, ver pantallas/detalle/resaltado.ts). */
+::highlight(sonando) { background-color: color-mix(in srgb, var(--acento) 20%, transparent); color: var(--tinta); }
+::highlight(dudosa) { text-decoration: underline dotted var(--tenue); text-decoration-thickness: 1.5px; }
+::highlight(coincidencia) { background-color: color-mix(in srgb, var(--tinta) 12%, transparent); }
+::highlight(coincidencia-actual) { background-color: color-mix(in srgb, var(--acento) 32%, transparent); color: var(--tinta); }
+.dudosa-muestra { text-decoration: underline dotted var(--tenue); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+
+/* Una fila deslizable (los chips de frente) se desvanece a la derecha: así se nota que hay más. */
+.mask-fade-r { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent); }
+
+/* Atajos superpuestos mientras se mantiene Alt (ExposeHK, Malacria 2013): disponibles sin ensuciar los botones. */
+.atajo-flot { display: none; position: absolute; top: -8px; right: -6px; z-index: 5; padding: 0 5px; border-radius: 4px; background: var(--tinta); color: var(--fondo); font-family: var(--font-mono); font-size: 10.5px; line-height: 1.5; pointer-events: none; }
+body.ver-atajos .atajo-flot { display: inline-block; }

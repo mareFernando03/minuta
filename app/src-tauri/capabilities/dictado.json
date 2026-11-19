@@ -1,0 +1,11 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "dictado",
+  "description": "La píldora del dictado: solo dibuja lo que avisa el motor, sin abrir URLs, notificar ni tocar el inicio",
+  "windows": [
+    "dictado"
+  ],
+  "permissions": [
+    "core:default"
+  ]
+}

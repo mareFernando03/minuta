@@ -1,0 +1,1 @@
+Reunión con Lucía Benítez, Pablo Sosa, Pedro Ríos, Juan Castro, Laura Martínez, Diego Molina y Sofía Paz. Temas: Contoso, Fabrikam, Northwind, Globex, Orbit, Azure DevOps, Meet, Teams, Slack, appsettings, Stage y deploy.
