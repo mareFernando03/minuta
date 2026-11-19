@@ -6,12 +6,27 @@ Minuta detects when a Teams, Meet or Slack huddle starts, records both sides of 
 
 > The UI and the code comments are in Spanish.
 
-<!-- Screenshots / GIF -->
 <p align="center">
-  <em>Screenshots coming soon.</em>
-  <!-- <img src="docs/screenshot-library.png" width="800" alt="Meeting library"> -->
-  <!-- <img src="docs/demo.gif" width="800" alt="Recording and transcription demo"> -->
+  <img src="docs/screenshots/library.png" width="800" alt="Meeting library with a transcript open"><br>
+  <em>The library: meetings by day and folder, with the transcript and the marks you set while recording.</em>
 </p>
+
+<p align="center">
+  <img src="docs/screenshots/meeting.png" width="800" alt="Meeting detail with summary and action items"><br>
+  <em>A meeting with its Claude summary: every point links to the minute that backs it, and action items wait for your OK.</em>
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/search.png" width="800" alt="Ctrl+K search across all meetings"><br>
+  <em><code>Ctrl+K</code> searches everything that was said and jumps to that minute.</em>
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/recording.png" width="800" alt="Recording in progress"><br>
+  <em>Recording in progress: both channels, live levels, marks and notes with their minute.</em>
+</p>
+
+<sub>Screenshots use fictitious sample data.</sub>
 
 ## Why
 
